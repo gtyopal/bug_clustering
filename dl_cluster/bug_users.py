@@ -1,5 +1,5 @@
 # Import Project Source Files
-from bug_utils import user_for_bug
+import user_for_bug
 
 
 class BugUsers:

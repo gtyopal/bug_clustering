@@ -1,5 +1,5 @@
 # Import Project Source Files
-from bug_utils import loginfo
+import loginfo
 
 
 class BugLogInfo:

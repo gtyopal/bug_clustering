@@ -8,7 +8,6 @@ data_dir = os.path.join(PARENT_DIR_PATH,'data')
 model_dir = os.path.join(PARENT_DIR_PATH, "checkpoint",'model')
 log_file = os.path.join(PARENT_DIR_PATH, 'logs', 'cluster')
 bug_data = os.path.join(PARENT_DIR_PATH, 'clusterdata', 'bug_feature_jaschen_0627/parquet')
-#bug_data = "/Users/Fiona/Documents/Cisco/data/bug_feature_jaschen_0627/parquet"
 nonnlp_feature = os.path.join(PARENT_DIR_PATH, 'clusterdata', 'nonnlp_feature.csv')
 nonnlp_feature_dict_pkl = os.path.join(PARENT_DIR_PATH, 'clusterdata', 'nonnlp_label_dict_feature.pkl')
 dictionary_path = os.path.join(PARENT_DIR_PATH,"checkpoint",'all.dictionary')
@@ -55,6 +54,7 @@ lsi_dim = 300                  # lsi dimension
 pca_dim = 100                  # pca dimension
 
 
+
 bug_fields = ['bf_bugid', 'bf_component', 'bf_project', 'bf_product', 'bf_de_manager', 'bf_severity',
                   'bf_submitted_on', 'bf_headline', 'bf_attribute', 'bf_description', 'bf_symptoms', 'bf_conditions',
                   'bf_workarounds', 'bf_release_note', 'bf_duplicateofbug']
@@ -65,10 +65,10 @@ nlp_fields = ['bf_bugid', 'bf_headline', 'bf_attribute', 'bf_description', 'bf_s
 nonnlp_fields = ['bf_bugid', 'bf_component', 'bf_project', 'bf_product', 'bf_de_manager', 'bf_severity',
                  'bf_submitted_on']
 
-input_bug_list_test_iot = ['CSCux77907','CSCux84043']
-input_bug_list_test_sw = ['CSCux77336','CSCux80724']
-input_bug_list_test_rt = ['CSCux71526','CSCux72157']
 
+input_bug_list_test_iot =['CSCux77907','CSCux84043']
+input_bug_list_test_sw =['CSCux77336','CSCux80724']
+input_bug_list_test_rt =['CSCux71526','CSCux72157']
 
 input_bug_list_iot =['CSCvq11329',
 'CSCvp99133',

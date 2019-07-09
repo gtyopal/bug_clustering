@@ -20,7 +20,7 @@ warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
 import pyarrow as pa
 import pyarrow.parquet as pq
 from naming_lib import colname as colname
-import model_word2vec
+from models import model_word2vec
 from gensim.models import Word2Vec
 import pickle
 from gensim.utils import simple_preprocess
@@ -142,7 +142,6 @@ def clean_dataset(df):
     df_bug_nlp.fillna('Missing', inplace=True)
     df_bug_nlp.index = df_bug_nlp['bf_bugid']
     df_bug_nlp.loc[:, 'message'] = ''
-    nlp_fields.remove('bf_bugid')
     for field in nlp_fields:
         df_bug_nlp.loc[:, field] = df_bug_nlp[field].astype(str)
         df_bug_nlp.loc[:, 'message'] += df_bug_nlp[field].astype(str)
@@ -154,11 +153,12 @@ def clean_dataset(df):
 
 def load_dataset():
     print("Reading CSV file...")
+
     bug_fields =config.bug_fields
     nlp_fields = config.nlp_fields
     nonnlp_fields = config.nonnlp_fields
     table = pq.read_table(config.bug_data, columns=bug_fields)
-    df = table.to_pandas()[:1000]
+    df = table.to_pandas()
     df.drop_duplicates(inplace=True)
     df_bug_nlp, df_bug_nonnlp = clean_dataset(df)
     utils.create_vocabulary(df_bug_nlp['text'].tolist())
@@ -166,6 +166,7 @@ def load_dataset():
     df_bug_nlp.to_csv(config.nlp_data_clean, index=True)
     df_bug_nonnlp.to_csv(config.nonnlp_data_clean, index=True)
     return df_bug_nlp, df_bug_nonnlp
+
 
 
 # Prepare training data for model
@@ -187,3 +188,5 @@ def get_training_word2vec_vec():
     return df_word2vec
 
 
+# if __name__ == '__main__':
+#     prepare_data_for_model()

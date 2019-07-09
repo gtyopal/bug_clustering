@@ -1,5 +1,5 @@
 # Import Project Source Files
-import rel_bug
+from bug_utils import rel_bug
 
 
 class BugRelBugs:

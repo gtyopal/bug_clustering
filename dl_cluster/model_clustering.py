@@ -14,10 +14,10 @@ import time
 import math
 
 import settings as config
-import rel_bug
-import bug_rel_bugs
+from bug_utils import rel_bug
+from bug_utils import bug_rel_bugs
 
-import model_word2vec
+from models import model_word2vec
 import data_preprocessing as dp
 
 """
@@ -135,7 +135,7 @@ def get_nlp_features():
             df_bug_nlp['bf_release_note_clean'].tolist())
 
         df_nlp_feature = df_bug_nlp[
-            [ "bf_headline_clean", "bf_attribute_clean", "bf_description_clean",
+            ["bf_bugid", "bf_duplicateofbug", "bf_headline_clean", "bf_attribute_clean", "bf_description_clean",
              'bf_symptoms_clean', 'bf_conditions_clean', 'bf_workarounds_clean', 'bf_release_note_clean',
              "bf_headline_vector", "bf_attribute_vector", "bf_description_vector",
              'bf_symptoms_vector', 'bf_conditions_vector', 'bf_workarounds_vector', 'bf_release_note_vector',

@@ -3,13 +3,13 @@ import json
 import ast
 
 # Import Project Source Files
-import bug_reprostep
-import bug_loginfo
-import bug_rel_bugs
-import rel_bug
-import loginfo
-import user_for_bug
-import bug_users
+from bug_utils import bug_reprostep
+from bug_utils import bug_loginfo
+from bug_utils import bug_rel_bugs
+from bug_utils import rel_bug
+from bug_utils import loginfo
+from bug_utils import user_for_bug
+from bug_utils import bug_users
 
 
 def write_json_to_file(json_list, file_name):

@@ -6,10 +6,10 @@ from sklearn.externals import joblib
 import data_preprocessing as dp
 import pyarrow.parquet as pq
 import train
-import model_clustering
+from models import model_clustering
 import pandas as pd
 from clustering import train_cluster_model
-import read_write_json
+from bug_utils import read_write_json
 
 def eval_bug(input_bug_list):
     if not os.path.exists(config.train_data_all_pkl):
@@ -44,9 +44,10 @@ def eval_bug(input_bug_list):
             cluster_id = model.predict(test_vec_pca)
         except Exception as e:
             cluster_id = model.fit_predict(test_vec_pca)
+
         df_res = model_clustering.related_dup_bug(input_bug, cluster_id[0], test_vec_pca, centroids, cluster_result_df,
                                                   saved_training_vec, nlp_data_clean)
-        brb, df_current = model_clustering.make_related_bugs(input_bug, df_nlp_feature, df_res, df_dup)
+        brb, df_current = model_clustering.make_related_bugs(input_bug,df_nlp_feature,df_res,df_dup)
         brbs.append(brb)
         df_full = df_full.append(df_current)
     print("Writing result to json...")

@@ -3,9 +3,9 @@ import sys
 
 import settings as config
 import data_preprocessing as dp
-import read_write_json
-import bug_rel_bugs
-import rel_bug
+from bug_utils import read_write_json
+from bug_utils import bug_rel_bugs
+from bug_utils import rel_bug
 import os
 import pickle
 from sklearn.preprocessing import StandardScaler
@@ -15,7 +15,7 @@ from sklearn.externals import joblib
 import numpy as np
 import warnings
 warnings.filterwarnings('ignore')
-import model_nonnlp
+from models import model_nonnlp
 
 def load_training_all_features():
     if os.path.exists(config.train_data_all_pkl):

@@ -26,6 +26,5 @@ def train_cluster_model():
     df_nlp_feature = model_clustering.get_nlp_features()
     print("end make df_nlp_features")
 
-
 if __name__ == '__main__':
     train_cluster_model()
